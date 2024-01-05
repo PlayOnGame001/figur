@@ -1,0 +1,68 @@
+﻿<Window x:Class="figur.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:figur"
+        mc:Ignorable="d"
+         Title="MainWindow" Height="200" Width="400" Background="DarkBlue">
+    <Window.Resources>
+        <ControlTemplate x:Key="Login" TargetType="{x:Type Button}">
+            <Border CornerRadius="20" Background="Green" TextBlock.Foreground="White" Name="BorderLogin">
+                <Grid>
+                    <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="BorderLogin" Property="Background" Value="LightGreen"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="Cancel" TargetType="{x:Type Button}">
+            <Border CornerRadius="20" Background="Red" TextBlock.Foreground="White" Name="BorderCancel">
+                <Grid>
+                    <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="BorderCancel" Property="Background" Value="#911"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="textBox" TargetType="TextBox">
+            <Border CornerRadius="10" BorderThickness="2" BorderBrush="LightGray" Background="Gray" TextBlock.Foreground="White" Height="30" x:Name="BorderTextBox">
+                <Grid>
+                    <ContentPresenter RecognizesAccessKey="True" Margin="{TemplateBinding Padding}"></ContentPresenter>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="10" Width="auto" HorizontalAlignment="Left">
+            <TextBlock Foreground="White" Text="Username:" FontSize="20" Margin="0,0,0,10"/>
+            <TextBlock Foreground="White" Text="Password:" FontSize="20"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBox Margin="0,0,0,10" FontSize="20" Template="{StaticResource textBox}"/>
+            <TextBox FontSize="20" Template="{StaticResource textBox}"/>
+            <CheckBox Foreground="White" Content="Remember me" FontSize="13" Margin="0,10,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Width="220" Height="50" Orientation="Horizontal">
+            <Button Margin="5" Padding="6" Width="100" TextBlock.TextAlignment="Center" FontSize="18" Template="{StaticResource Login}">Log In</Button>
+            <Button Content="Cancel" Margin="5" Padding="6" Width="100" TextBlock.TextAlignment="Center" FontSize="18" Template="{StaticResource Cancel}"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
